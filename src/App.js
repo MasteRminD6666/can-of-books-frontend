@@ -2,6 +2,10 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { withAuth0 } from '@auth0/auth0-react';
+import BestBooks from './BestBooks'
+import Login from './Login'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,6 +34,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { isAuthenticated } = this.props.auth0;
     return (
       <>
         <Router>
@@ -37,8 +42,28 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/">
               {/* TODO: if the user is logged in, render the `BestBooks` component, if they are not, render the `Login` component */}
+              {isAuthenticated &&
+                <BestBooks></BestBooks>
+
+              }
+              {!isAuthenticated &&
+                <Login></Login>
+
+              }
+
+              {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
             </Route>
-            {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
+            <Route exact path="/Profile">
+              {/* TODO: if the user is logged in, render the `BestBooks` component, if they are not, render the `Login` component */}
+              {isAuthenticated &&
+                <BestBooks></BestBooks>
+
+              }
+              {!isAuthenticated &&
+                <Login></Login>
+
+              }
+            </Route>
           </Switch>
           <Footer />
         </Router>
@@ -47,4 +72,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withAuth0(App);
