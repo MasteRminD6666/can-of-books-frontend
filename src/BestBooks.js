@@ -2,7 +2,7 @@ import React from 'react';
 import { withAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import Bookitems from './bookitems'
-import Carousel from 'react-bootstrap/Carousel';
+
 class BestBooks extends React.Component {
   constructor(props) {
     super(props);
