@@ -61,7 +61,7 @@ class App extends React.Component {
               <>
                 <BestBooks></BestBooks>
                 <Profile></Profile>
-              </>
+                </>
               }
              {!isAuthenticated &&
                 <Login></Login>
