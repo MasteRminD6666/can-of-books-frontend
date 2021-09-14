@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React from 'react';
-
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { withAuth0 } from '@auth0/auth0-react';
 import BookCards from '../components/Cards';
 class FormHnadle extends React.Component {
     constructor(props){
@@ -14,12 +14,14 @@ class FormHnadle extends React.Component {
     addBook= (event) => {
         // window.location.reload(false);
       event.preventDefault();
+      const { user } =this.props.auth0
+      const email=user.email
       const postData={
           BookName: event.target.bookName.value,
-              
+          ownerEmail: email
       }
       //https://can-of-books201.herokuapp.com/addBook
-      axios.post(`http://localhost:3001/addbook`,postData)
+      axios.post(`https://can-of-books201.herokuapp.com/addBook`,postData)
       .then((results) => {
        this.setState({
            favbook:results.data
@@ -52,4 +54,4 @@ class FormHnadle extends React.Component {
     }
 }
 
-export default FormHnadle;
+export default withAuth0(FormHnadle);
