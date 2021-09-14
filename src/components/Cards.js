@@ -8,17 +8,17 @@ class BookCards extends React.Component {
         return (
 
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={this.props.item.image} />
+                <Card.Img variant="top" src={this.props.item.img} />
                 <Card.Body>
-                    <Card.Title>{this.props.item.title}</Card.Title>
+                    <Card.Title>Title: {this.props.item.title}</Card.Title>
                     <Card.Text>
-                    {this.props.item.desc}
+                        {this.props.item.description}
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
-                    <ListGroupItem>{this.props.item.auth[0]}</ListGroupItem>
-                    <ListGroupItem>{this.props.item.status}</ListGroupItem>
-                    <ListGroupItem>{this.props.item.pages}</ListGroupItem>
+                    <ListGroupItem>Author: {this.props.item.auth}</ListGroupItem>
+                    <ListGroupItem>Type: {this.props.item.status}</ListGroupItem>
+                    <ListGroupItem>Pages:{this.props.item.pages}</ListGroupItem>
                 </ListGroup>
              
             </Card>

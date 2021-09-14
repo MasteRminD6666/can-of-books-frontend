@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-
+import { withAuth0 } from '@auth0/auth0-react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import BookCards from '../components/Cards';
@@ -14,9 +14,12 @@ class FormHnadle extends React.Component {
     addBook= (event) => {
         // window.location.reload(false);
       event.preventDefault();
+      const { user } =this.props.auth0
+      const email=user.email
+      
       const postData={
           BookName: event.target.bookName.value,
-              
+          ownerEmail: email
       }
       //https://can-of-books201.herokuapp.com/addBook
       axios.post(`https://can-of-books201.herokuapp.com/addBook`,postData)
@@ -52,4 +55,4 @@ class FormHnadle extends React.Component {
     }
 }
 
-export default FormHnadle;
+export default withAuth0(FormHnadle);
