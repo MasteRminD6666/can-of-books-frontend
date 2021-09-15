@@ -22,7 +22,7 @@ class BestBooks extends React.Component {
       this.setState({
         books:result.data
       })
-      console.log(result);
+
     })
     .catch (err =>{
       console.log('error');
@@ -36,7 +36,7 @@ class BestBooks extends React.Component {
     return (
       <>
 
-        <h2>My Essential Lifelong Learning</h2>
+        <h2>Your Essential Lifelong Learning</h2>
         <FormHnadle></FormHnadle>
       
         <Bookitems books = {this.state.books}></Bookitems>
